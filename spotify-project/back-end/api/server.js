@@ -21,12 +21,14 @@ app.get("/api/songs", async (request, response) => {
   response.send(await db.collection("songs").find({}).toArray());
 });
 
-app.use(express.static(path.resolve(__dirname, "../../front-end/dist/assets")));
+app.use(express.static(path.join(__dirname, "../../front-end/dist")));
 
 app.get("*", async (request, response) => {
-  response.sendFile(path.resovle(__dirname, "../../front-end/dist/index.html"));
+  response.sendFile(path.join(__dirname, "../../front-end/dist/index.html"));
 });
 
 app.listen(PORT, () => {
   console.log(`O servidor está ouvindo a porta ${PORT}`);
+  console.log(`O __dirname é  ${__dirname}`);
+  console.log(`Path ${path.join(__dirname, "../../front-end/dist")}`);
 });
