@@ -28,7 +28,7 @@ app.get("*", async (request, response) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`O servidor está ouvindo a porta ${PORT}`);
+  console.log(`O servidor está ouvindo a port ${PORT}`);
   console.log(`O __dirname é  ${__dirname}`);
   console.log(`Path ${path.join(__dirname, "../../front-end/dist")}`);
 });
