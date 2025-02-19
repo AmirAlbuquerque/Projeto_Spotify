@@ -4,6 +4,7 @@ import { db } from "./connect.js";
 import path from "path";
 
 const __dirname = path.resolve();
+console.log(__dirname);
 
 const app = express();
 const PORT = 3000;
@@ -20,10 +21,10 @@ app.get("/api/songs", async (request, response) => {
   response.send(await db.collection("songs").find({}).toArray());
 });
 
-app.use(express.static(path.join(__dirname, "../../front-end/dist")));
+app.use(express.static(path.resolve(__dirname, "../../front-end/dist/assets")));
 
 app.get("*", async (request, response) => {
-  response.sendFile(path.join(__dirname, "../../front-end/dist/index.html"));
+  response.sendFile(path.resovle(__dirname, "../../front-end/dist/index.html"));
 });
 
 app.listen(PORT, () => {
